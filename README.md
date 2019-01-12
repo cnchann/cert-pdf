@@ -16,7 +16,7 @@ git clone https://github.com/ppfish45/cert-verifier.git && cd cert-verifier && s
 3. Clone cert-pdf and enter the directory
 
 ```
-git clone https://github.com/ppfish45/cert-pdf.git && cd cert_pdf
+git clone https://github.com/ppfish45/cert-pdf.git && cd cert-pdf
 ```
 
 ## Usage
