@@ -3,7 +3,7 @@ This is a variant of Blockcert which enables users to embed PDF files inside blo
 
 ## Install
 
-1. Please make sure that you have the recommanded [python environment](https://github.com/blockchain-certificates/cert-issuer/blob/master/docs/virtualenv.md) provided to run the blockcert project.
+1. Please make sure that you have the recommended [python environment](https://github.com/blockchain-certificates/cert-issuer/blob/master/docs/virtualenv.md) to run the blockcert project.
 
 2. Install the **modified** blockcert module via following commands:
 
