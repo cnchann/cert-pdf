@@ -19,10 +19,10 @@ from cert_issuer import config
 # clean the temp dir
 
 def clear():
-    shutil.rmtree('configuration/unsigned_certificates')
-    shutil.rmtree('configuration/templates')
-    os.makedirs('configuration/unsigned_certificates')
-    os.makedirs('configuration/templates')
+    shutil.rmtree('../configuration/unsigned_certificates')
+    shutil.rmtree('../configuration/templates')
+    os.makedirs('../configuration/unsigned_certificates')
+    os.makedirs('../configuration/templates')
 
 def getBase64(filename):
     file = open(filename, 'rb')
@@ -68,21 +68,21 @@ def create_roster(import_path, name_pattern):
             list_DOCID.append(res.group('DOCID'))
             list_PDFinfo.append(getBase64(filename))
 
-    writeRoster(list_NAME, list_DOCID, list_PDFinfo, 'configuration/roster/roster.csv')
+    writeRoster(list_NAME, list_DOCID, list_PDFinfo, '../configuration/roster/roster.csv')
 
     return list_DOCID
 
 def create_template():
-    conf = tpl.get_config(os.path.abspath('configuration/cert_tools_conf.ini'))
+    conf = tpl.get_config(os.path.abspath('../configuration/cert_tools_conf.ini'))
     tpl.create_certificate_template(conf)
 
 def create_certificates():
-    conf = ist.get_config(os.path.abspath('configuration/cert_tools_conf.ini'))
+    conf = ist.get_config(os.path.abspath('../configuration/cert_tools_conf.ini'))
     ist.create_unsigned_certificates_from_roster(conf)
 
 def issue_certificates(export_path):
     try:
-        parsed_config = config.get_config(os.path.abspath('configuration/cert_issuer_conf.ini'))
+        parsed_config = config.get_config(os.path.abspath('../configuration/cert_issuer_conf.ini'))
         tx_id = isu.main(parsed_config)
         if tx_id:
             logging.info('Transaction id is %s', tx_id)

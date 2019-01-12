@@ -4,11 +4,15 @@ import base64
 import issuer_helpers
 import verify_helpers
 
-pdf_import_path = 'PDFs'
-json_export_path = 'configuration/blockcert_certificates'
-summary_export_path = 'summary.json'
-tools_conf = 'configuration/cert_tools_conf.ini'
-issuer_conf = 'configuration/cert_issuer_conf.ini'
+# Paths below can be modified, which is just for testing
+
+pdf_import_path = '../PDFs'
+json_export_path = '../configuration/blockcert_certificates'
+tools_conf = '../configuration/cert_tools_conf.ini'
+issuer_conf = '../configuration/cert_issuer_conf.ini'
+
+# Test public key
+
 pubkey_list = ['mubib9QNSNfBZkphQb3cCXG6giGKzA9k3X']
 
 # FUNCTION issue_batch - Load a set of PDF files and finally deploy them on the blockchain
@@ -33,7 +37,7 @@ def issue_batch(import_path, export_path, summary_path, name_pattern = '|DOCID|-
     issuer_helpers.modify_ini(issuer_conf, 'ISSUERCONF', 'blockchain_certificates_dir', export_path)
     issuer_helpers.issue_certificates(export_path)
     print('\n[INFO] Generating summary file ...')
-    issuer_helpers.generate_summary(export_path, summary_export_path, list_DOCID)
+    issuer_helpers.generate_summary(export_path, summary_path, list_DOCID)
     print('\n[INFO] All steps finished.\n')
 
 # FUNCTION verify_cert - Verify whether a cert
@@ -79,4 +83,3 @@ def extract_pdf(cert_path, export_path):
             print('[INFO] Extract succeeded!')
     except Exception as e:
         print(e)
-
